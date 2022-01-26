@@ -20,7 +20,7 @@ cellphone_for_seurat <- function(Seurat_obj){
 
   counts <- as.data.frame(
     as.matrix(
-      Seurat_obj@data)
+      Seurat_obj@assays$RNA)
     )
 
   #colnames(counts) <- paste('d-pos_', colnames(counts), sep = '')
@@ -48,7 +48,7 @@ cellphone_for_seurat <- function(Seurat_obj){
   counts$ensembl_gene_id <- NULL
 
   metadata <- data.frame(Cell = rownames(Seurat_obj@meta.data),
-                         cell_type = Seurat_obj@ident
+                         cell_type = Seurat_obj@active.ident
                          )
 
   #metadata$Cell <- paste('d-pos_', metadata$Cell, sep = '')
